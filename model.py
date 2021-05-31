@@ -143,6 +143,117 @@ class Model(nn.Module):
         
         #x = self.softmax(x)
         return dict
+
+
     
-model = Model()
-print(model)
+class Block1(nn.Module):    
+    def __init__(self):
+        super(Block1, self).__init__()
+        
+        #1st Block
+        self.conv1b = nn.Conv2d(64,64,3,padding=1)
+        self.BN1b = nn.BatchNorm2d(64)  # + LR
+        self.conv1c = nn.Conv2d(64,64,3,padding=1)
+        self.BN1c = nn.BatchNorm2d(64)  # + Adding + LR + AvgPool
+        
+    def forward(self,x1a)
+        
+        x1b = nn.LeakyReLU(0.2)(self.BN1b(self.conv1b(x1a)))
+        x1c = self.BN1c(self.conv1c(x1b))
+        
+        dict = {}
+        dict['x1b'] = x1b
+        dict['x1c_'] = x1c_      # after BN before LR
+        
+        return dict
+        
+class Block2(nn.Module):    
+    def __init__(self):
+        super(Block2, self).__init__()
+        
+        #2st Block
+        self.conv2b = nn.Conv2d(128,128,3,padding=1)
+        self.BN2b = nn.BatchNorm2d(128)  # + LR
+        self.conv2c = nn.Conv2d(128,128,3,padding=1)
+        self.BN2c = nn.BatchNorm2d(128)  # + Adding + LR + AvgPool
+        
+    def forward(self,x2a)
+        
+        x2b = nn.LeakyReLU(0.2)(self.BN2b(self.conv2b(x2a)))
+        x2c = self.BN2c(self.conv1c(x2b))
+        
+        dict = {}
+        dict['x2b'] = x2b
+        dict['x2c_'] = x2c_      # after BN before LR
+        
+        return dict
+        
+        
+class Block3(nn.Module):    
+    def __init__(self):
+        super(Block3, self).__init__()
+        
+        #3st Block
+        self.conv3b = nn.Conv2d(256,256,3,padding=1)
+        self.BN3b = nn.BatchNorm2d(256)  # + LR
+        self.conv3c = nn.Conv2d(256,256,3,padding=1)
+        self.BN3c = nn.BatchNorm2d(256)  # + Adding + LR + AvgPool
+        
+        
+    def forward(self,x3a)
+        
+        x3b = nn.LeakyReLU(0.2)(self.BN3b(self.conv3b(x3a)))
+        x3c = self.BN3c(self.conv1c(x3b))
+        
+        dict = {}
+        dict['x3b'] = x3b
+        dict['x3c_'] = x3c_      # after BN before LR
+        
+        return dict
+        
+        
+class Block4(nn.Module):    
+    def __init__(self):
+        super(Block4, self).__init__()
+        
+        #4st Block
+        self.conv4b = nn.Conv2d(512,512,3,padding=1)
+        self.BN4b = nn.BatchNorm2d(512)  # + LR
+        self.conv4c = nn.Conv2d(512,512,3,padding=1)
+        self.BN4c = nn.BatchNorm2d(512)  # + Adding + LR + AvgPool
+        
+        
+    def forward(self,x4a)
+        
+        x4b = nn.LeakyReLU(0.2)(self.BN4b(self.conv3b(x4a)))
+        x4c = self.BN4c(self.conv1c(x4b))
+        
+        dict = {}
+        dict['x4b'] = x4b
+        dict['x4c_'] = x4c_      # after BN before LR
+        
+        return dict
+        
+        
+class Block5(nn.Module):    
+    def __init__(self):
+        super(Block5, self).__init__()
+        
+        #5st Block
+        self.conv5b = nn.Conv2d(1024,1024,3,padding=1)
+        self.BN5b = nn.BatchNorm2d(1024)  # + LR
+        self.conv5c = nn.Conv2d(1024,1024,3,padding=1)
+        self.BN5c = nn.BatchNorm2d(1024)  # + Adding + LR + AvgPool
+        
+    def forward(self,x5a)
+        
+        x5b = nn.LeakyReLU(0.2)(self.BN5b(self.conv3b(x5a)))
+        x5c = self.BN5c(self.conv1c(x5b))
+        
+        dict = {}
+        dict['x5b'] = x5b
+        dict['x5c_'] = x5c_      # after BN before LR
+        
+        return dict
+    
+
